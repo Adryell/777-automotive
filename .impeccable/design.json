@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-14T18:00:00-03:00",
+  "title": "Design System: 777 Automotive",
+  "extensions": {
+    "colorMeta": {
+      "signal-yellow": { "role": "primary", "displayName": "Signal Yellow", "canonical": "#ffcb05", "tonalRamp": ["oklch(15% 0.055 94)", "oklch(27% 0.09 94)", "oklch(39% 0.125 94)", "oklch(51% 0.16 94)", "oklch(63% 0.19 94)", "oklch(75% 0.18 94)", "oklch(87% 0.11 94)", "oklch(95% 0.045 94)"] },
+      "showroom-black": { "role": "neutral", "displayName": "Showroom Black", "canonical": "#070707", "tonalRamp": ["#070707", "#202020", "#393939", "#535353", "#707070", "#949494", "#c5c5c5", "#f2f2f2"] },
+      "category-black": { "role": "neutral", "displayName": "Category Black", "canonical": "#0a0a0a", "tonalRamp": ["#0a0a0a", "#222222", "#3b3b3b", "#555555", "#727272", "#969696", "#c6c6c6", "#f2f2f2"] },
+      "footer-black": { "role": "neutral", "displayName": "Footer Black", "canonical": "#050505", "tonalRamp": ["#050505", "#1e1e1e", "#373737", "#515151", "#6e6e6e", "#929292", "#c4c4c4", "#f1f1f1"] },
+      "gallery-white": { "role": "neutral", "displayName": "Gallery White", "canonical": "#fff", "tonalRamp": ["#262626", "#414141", "#5e5e5e", "#7c7c7c", "#9b9b9b", "#bbbbbb", "#dddddd", "#ffffff"] },
+      "showroom-paper": { "role": "neutral", "displayName": "Showroom Paper", "canonical": "#f3f3f0", "tonalRamp": ["#242421", "#3f3f3b", "#5b5b56", "#797974", "#989892", "#b8b8b2", "#d8d8d3", "#f3f3f0"] },
+      "showroom-sand": { "role": "neutral", "displayName": "Showroom Sand", "canonical": "#eee5d7", "tonalRamp": ["#29251f", "#443d33", "#605648", "#7e7160", "#9d8e7a", "#bdad98", "#d9cdbb", "#eee5d7"] },
+      "showroom-sage": { "role": "neutral", "displayName": "Showroom Sage", "canonical": "#dfe7de", "tonalRamp": ["#222822", "#394139", "#515b51", "#6b766b", "#879288", "#a6afa6", "#c5cec5", "#dfe7de"] },
+      "metallic-light": { "role": "neutral", "displayName": "Metallic Light", "canonical": "#dce5e9", "tonalRamp": ["#20272a", "#374145", "#4e5b60", "#68767b", "#849299", "#a2afb5", "#c2cdd2", "#dce5e9"] },
+      "soft-ink": { "role": "neutral", "displayName": "Soft Ink", "canonical": "#1f2527", "tonalRamp": ["#1f2527", "#364044", "#4e5b60", "#68767b", "#849298", "#a3afb4", "#c4cdd1", "#edf1f2"] },
+      "muted-copy": { "role": "neutral", "displayName": "Muted Copy", "canonical": "#686864", "tonalRamp": ["#242422", "#3b3b38", "#52524e", "#686864", "#858580", "#a5a59f", "#c9c9c3", "#f1f1ed"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero and final conversion declarations." },
+      "headline": { "displayName": "Headline", "purpose": "Section introductions." },
+      "title": { "displayName": "Category Title", "purpose": "Oversized category names inside merchandise cards." },
+      "body": { "displayName": "Body", "purpose": "Short supporting descriptions." },
+      "label": { "displayName": "Action Label", "purpose": "Buttons, metadata, cues, and compact navigation." }
+    },
+    "shadows": [
+      { "name": "category-hover", "value": "0 22px 45px #0002", "purpose": "Restrained lift beneath an image-led category panel on hover." }
+    ],
+    "motion": [
+      { "name": "state-transition", "value": "300ms", "purpose": "Buttons and compact icon controls." },
+      { "name": "card-transition", "value": "450ms cubic-bezier(.2,.8,.2,1)", "purpose": "Subtle category-card hover contraction." },
+      { "name": "gallery-transition", "value": "350ms", "purpose": "Gallery veil and icon reveal." },
+      { "name": "hero-enter", "value": "1.65s power4.out; scale 1.08 to 1.03", "purpose": "Crop-safe arrival of the full-bleed showroom photograph." },
+      { "name": "hero-pointer-pan", "value": "800ms power3.out; xPercent ±0.6, yPercent ±0.35", "purpose": "Subtle two-axis pan that keeps the cover image inside its frame." },
+      { "name": "hero-scroll-crop", "value": "scale 1.1, y 30px, opacity 0; scrubbed", "purpose": "Controlled crop-safe hero exit on scroll." },
+      { "name": "section-reveal", "value": "0.9s power4.out; stagger 0.11s; start top 82%; once", "purpose": "Ordered reveals for categories, Instagram, and footer content." },
+      { "name": "marquee-reveal", "value": "clip-path inset(0 100% 0 0) to visible; no container transform", "purpose": "Reveals the marquee without conflicting with its child's continuous transform." },
+      { "name": "reduced-motion", "value": "static final state", "purpose": "Disables Lenis, hero motion, ScrollTriggers, and staged reveals." },
+      { "name": "marquee-cycle", "value": "24s linear infinite", "purpose": "Continuous product and coverage ticker." }
+    ],
+    "breakpoints": [
+      { "name": "stack", "value": "900px" },
+      { "name": "compact", "value": "560px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The high-visibility conversion action; production renders the official siWhatsapp path from Simple Icons.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">COTIZAR POR WHATSAPP <svg viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12 2a9.7 9.7 0 0 0-8.4 14.6L2.2 22l5.5-1.4A9.8 9.8 0 1 0 12 2Zm0 17.6c-1.5 0-2.9-.4-4.1-1.1l-.3-.2-3.2.8.9-3.1-.2-.3A7.7 7.7 0 1 1 12 19.6Zm4.2-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1a6.3 6.3 0 0 1-3-2.6c-.2-.3 0-.4.1-.5l.4-.5.2-.4c.1-.2 0-.3 0-.4L9.8 8c-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.4-.6 1.6-1.1.2-.6.2-1 .2-1.1-.1-.1-.2-.2-.5-.3l-1.6-.7Z\"/></svg></a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:14px;background:var(--yellow,#ffcb05);color:var(--black,#070707);border:1px solid var(--yellow,#ffcb05);padding:19px 23px;font:600 13px/1 'DM Sans',sans-serif;letter-spacing:.06em;text-decoration:none;transition:.3s}.ds-btn-primary svg{width:19px;height:19px}.ds-btn-primary:hover{background:#000;color:var(--yellow,#ffcb05);transform:translateY(-2px)}.ds-btn-primary:focus-visible{outline:3px solid var(--yellow,#ffcb05);outline-offset:4px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "A restrained secondary action for social follow-through.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">SÍGUENOS EN INSTAGRAM</a>",
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--black,#070707);border:1px solid #111;padding:19px 23px;font:600 13px/1 'DM Sans',sans-serif;letter-spacing:.06em;text-decoration:none;transition:.3s}.ds-btn-outline:hover{background:#111;color:#fff}.ds-btn-outline:focus-visible{outline:3px solid var(--yellow,#ffcb05);outline-offset:4px}"
+    },
+    {
+      "name": "Dark Category Card",
+      "kind": "card",
+      "refersTo": "category-card-dark",
+      "description": "An image-led accessories panel with a separate black content band and WhatsApp action.",
+      "html": "<a class=\"ds-category-dark\" href=\"#\"><div class=\"ds-category-media\"></div><div class=\"ds-category-content\"><div><span>EXTERIOR · INTERIOR · PERFORMANCE</span><strong>ACCESORIOS</strong></div><b>VER OPCIONES <svg viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12 2a9.7 9.7 0 0 0-8.4 14.6L2.2 22l5.5-1.4A9.8 9.8 0 1 0 12 2Z\"/></svg></b></div></a>",
+      "css": ".ds-category-dark{display:flex;flex-direction:column;height:440px;overflow:hidden;background:#0a0a0a;color:#fff;text-decoration:none;transition:.45s cubic-bezier(.2,.8,.2,1)}.ds-category-media{height:275px;flex:none;background:linear-gradient(135deg,#777,#202020);filter:grayscale(1);transition:filter .45s ease,transform .6s cubic-bezier(.2,.8,.2,1)}.ds-category-content{min-height:165px;padding:22px 26px 24px;display:flex;align-items:end;justify-content:space-between;gap:24px}.ds-category-content span{font:400 10px/1 Inter,sans-serif;letter-spacing:.12em;color:#aaa}.ds-category-content strong{display:block;margin-top:6px;font:600 clamp(2.8rem,4.5vw,4.8rem)/.95 Oswald,sans-serif}.ds-category-content b{display:flex;align-items:center;gap:10px;flex:none;padding-bottom:8px;color:var(--yellow,#ffcb05);font:600 10px/1 Inter,sans-serif;letter-spacing:.1em}.ds-category-content b svg{width:17px;height:17px}.ds-category-dark:hover{transform:translateY(-5px);box-shadow:0 22px 45px #0002}.ds-category-dark:hover .ds-category-media{filter:grayscale(0);transform:scale(1.015)}.ds-category-dark:focus-visible{outline:3px solid var(--yellow,#ffcb05);outline-offset:4px}"
+    },
+    {
+      "name": "Accent Category Card",
+      "kind": "card",
+      "refersTo": "category-card-accent",
+      "description": "The image-led parts counterpart with a separate yellow content band and stock action.",
+      "html": "<a class=\"ds-category-accent\" href=\"#\"><div class=\"ds-category-media\"></div><div class=\"ds-category-content\"><div><span>MOTOR · SUSPENSIÓN · CARROCERÍA</span><strong>REPUESTOS</strong></div><b>CONSULTAR STOCK <svg viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12 2a9.7 9.7 0 0 0-8.4 14.6L2.2 22l5.5-1.4A9.8 9.8 0 1 0 12 2Z\"/></svg></b></div></a>",
+      "css": ".ds-category-accent{display:flex;flex-direction:column;height:440px;overflow:hidden;background:var(--yellow,#ffcb05);color:var(--black,#070707);text-decoration:none;transition:.45s cubic-bezier(.2,.8,.2,1)}.ds-category-media{height:275px;flex:none;background:linear-gradient(135deg,#888,#292929);filter:grayscale(1);transition:filter .45s ease,transform .6s cubic-bezier(.2,.8,.2,1)}.ds-category-content{min-height:165px;padding:22px 26px 24px;display:flex;align-items:end;justify-content:space-between;gap:24px}.ds-category-content span{font:400 10px/1 Inter,sans-serif;letter-spacing:.12em;color:#5c4b00}.ds-category-content strong{display:block;margin-top:6px;font:600 clamp(2.8rem,4.5vw,4.8rem)/.95 Oswald,sans-serif}.ds-category-content b{display:flex;align-items:center;gap:10px;flex:none;padding-bottom:8px;color:#000;font:600 10px/1 Inter,sans-serif;letter-spacing:.1em}.ds-category-content b svg{width:17px;height:17px}.ds-category-accent:hover{transform:translateY(-5px);box-shadow:0 22px 45px #0002}.ds-category-accent:hover .ds-category-media{filter:grayscale(0);transform:scale(1.015)}.ds-category-accent:focus-visible{outline:3px solid #000;outline-offset:4px}"
+    },
+    {
+      "name": "Square Icon Action",
+      "kind": "nav",
+      "description": "The header WhatsApp action; production renders the official siWhatsapp path from Simple Icons.",
+      "html": "<a class=\"ds-icon-action\" href=\"#\" aria-label=\"Contactar por WhatsApp\"><svg viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12 2a9.7 9.7 0 0 0-8.4 14.6L2.2 22l5.5-1.4A9.8 9.8 0 1 0 12 2Zm0 17.6c-1.5 0-2.9-.4-4.1-1.1l-.3-.2-3.2.8.9-3.1-.2-.3A7.7 7.7 0 1 1 12 19.6Zm4.2-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1a6.3 6.3 0 0 1-3-2.6c-.2-.3 0-.4.1-.5l.4-.5.2-.4c.1-.2 0-.3 0-.4L9.8 8c-.2-.5-.5-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.4-.6 1.6-1.1.2-.6.2-1 .2-1.1-.1-.1-.2-.2-.5-.3l-1.6-.7Z\"/></svg></a>",
+      "css": ".ds-icon-action{display:grid;place-items:center;width:46px;height:46px;color:var(--yellow,#ffcb05);border:1px solid #333;text-decoration:none;transition:.3s}.ds-icon-action svg{width:21px;height:21px}.ds-icon-action:hover{border-color:var(--yellow,#ffcb05);transform:translateY(-2px)}.ds-icon-action:focus-visible{outline:3px solid var(--yellow,#ffcb05);outline-offset:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Precision Showroom",
+    "overview": "777 Automotive feels like a premium automotive campaign staged inside a real, luminous showroom. The hero photograph fills the viewport beneath the header, while a directional black overlay creates a protected field for bold white Archivo type and the yellow ACCESORIOS signal.\n\nThe system is direct, high-contrast, and spacious. DM Sans keeps supporting copy and actions approachable. Motion unfolds section by section in ordered, once-only reveals, while reduced-motion users receive every element immediately in its final state.",
+    "keyCharacteristics": ["A full-viewport environmental showroom photograph beneath the header and directional dark overlay.", "White hero text with ACCESORIOS in solid signal yellow.", "Archivo display typography paired with DM Sans body and actions.", "Sand, sage, and metallic blue-gray section surfaces interrupted by decisive black content bands.", "Ordered GSAP section reveals with a static reduced-motion fallback.", "A clip-only marquee reveal that preserves the scrolling child's transform."],
+    "rules": [
+      { "name": "The Yellow Is a Signal Rule", "body": "Use yellow where the visitor should act, notice a brand cue, or receive interaction feedback; do not wash large neutral sections in it without a structural purpose.", "section": "colors" },
+      { "name": "The Near-Black Rule", "body": "Prefer deep near-blacks over decorative dark colors so photography, yellow, and typography remain the only visual protagonists.", "section": "colors" },
+      { "name": "The Two-Speed Type Rule", "body": "Use Archivo for declarations and DM Sans for explanation or action; do not introduce a third typographic voice.", "section": "typography" },
+      { "name": "The Tight Display Rule", "body": "Large headlines should feel mechanically stacked through tight line height and deliberate line breaks, never loose or paragraph-like.", "section": "typography" },
+      { "name": "The Crop-Safe Motion Rule", "body": "Environmental imagery may scale and pan only inside an overflow-hidden cover frame; never apply 3D tilt, rotation, or motion that exposes the image edge.", "section": "elevation" },
+      { "name": "The Ordered Reveal Rule", "body": "Each post-hero section reveals once at 82% viewport entry, in authored DOM order, with a 0.11s stagger, 0.9s duration, and power4.out: marquee, category heading/copy/cards, Instagram heading/copy/tiles/button, then footer heading/button/bottom items.", "section": "elevation" },
+      { "name": "The Marquee Clip Rule", "body": "Reveal the marquee by clipping its container from right to left. Do not animate the marquee container's transform, because its child already owns the continuous horizontal transform.", "section": "elevation" },
+      { "name": "The Static Fallback Rule", "body": "When reduced motion is requested, do not initialize Lenis, hero motion, ScrollTriggers, or staged reveals; all content must render immediately in its final state.", "section": "elevation" },
+      { "name": "The Hard Edge Rule", "body": "Keep actionable and structural UI rectangular; reserve circles and rotated geometry for automotive illustration and atmosphere.", "section": "shapes" }
+    ],
+    "dos": ["Do use official vehicle and brand imagery as the dominant visual evidence.", "Do use the environmental showroom photograph full-viewport beneath the header with the directional dark overlay.", "Do use sand, sage, and metallic blue-gray to distinguish light sections while keeping yellow reserved for brand signals.", "Do render hero text in white and ACCESORIOS in solid signal yellow, without an underline.", "Do separate category photography from its content band and stack the action beneath copy on compact mobile.", "Do source the official WhatsApp path from Simple Icons (`siWhatsapp`) on every WhatsApp CTA.", "Do preserve strong black-on-light and light-on-black contrast, with yellow as the active signal.", "Do use uppercase Archivo for short, emphatic headings and DM Sans for supporting copy and actions.", "Do preserve the ordered, once-only section reveal sequence and its reduced-motion static fallback.", "Do reveal the marquee with clip-path only, leaving its scrolling child's transform untouched.", "Do keep WhatsApp conversion controls visually immediate and provide visible keyboard focus."],
+    "donts": ["Don't introduce rounded cards, pill buttons, soft gradients, or generic SaaS styling.", "Don't add decorative accent colors beyond the black, white/paper, sand, sage, metallic blue-gray, and logo-yellow system.", "Don't use heavy shadows on interface containers or make every element appear elevated.", "Don't add a halo or drop shadow to the full-bleed hero photograph, or apply 3D tilt.", "Don't pan or scale cover imagery far enough to expose an edge or lose the vehicle focal point.", "Don't place category titles directly over busy photography or bring back abstract tire/part geometry in place of product imagery.", "Don't substitute a generic message icon, speech bubble, or outbound arrow for the WhatsApp brand mark.", "Don't invent testimonials, partner logos, prices, certifications, contact details, or catalog claims to fill layouts.", "Don't shrink image collections into unreadable mobile grids; use the established horizontal rail behavior."]
+  }
+}
