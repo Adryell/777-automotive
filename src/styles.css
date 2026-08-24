@@ -26,3 +26,7 @@ body{font-family:'DM Sans',sans-serif}.hero{display:flex;align-items:center;back
 /* Independent square media assets prevent sprite stretching and preserve crop ratios. */
 .category-media,.insta-tile{background-size:cover;background-repeat:no-repeat;background-position:center}.accessories .category-media,.insta-tile.p0{background-image:url('/assets/feed-1.jpg')}.parts .category-media,.insta-tile.p1{background-image:url('/assets/feed-2.jpg')}.insta-tile.p2{background-image:url('/assets/feed-3.jpg')}.insta-tile.p3{background-image:url('/assets/feed-4.jpg')}.accessories .category-media{background-position:center 58%}.parts .category-media{background-position:center}.category-media{aspect-ratio:auto}.insta-tile{aspect-ratio:1/1}
 
+/* The live Instagram selection uses three linked posts. */
+.instagram-grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.instagram-grid{grid-template-columns:repeat(3,74vw)}}
+

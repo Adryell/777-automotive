@@ -11,7 +11,12 @@ gsap.registerPlugin(ScrollTrigger);
 const WA = import.meta.env.VITE_WHATSAPP_URL || 'https://wa.me/';
 const IG = import.meta.env.VITE_INSTAGRAM_URL || '#instagram';
 const FB = import.meta.env.VITE_FACEBOOK_URL || '#inicio';
-const brands = '★ S10 ★ HILUX ★ FORTUNER ★ ACCESORIOS ★ REPUESTOS ★ ENVÍOS A TODO PARAGUAY Y BRASIL ';
+const brands = '★ S10 ★ HILUX ★ FORTUNER ★ ACCESORIOS ★ REPUESTOS ★ ATENCIÓN EN CIUDAD DEL ESTE ';
+const instagramPosts = [
+  {href:'https://www.instagram.com/p/DTQzkWwD-9s/', image:'/assets/instagram-post-1.jpg', label:'Pickup equipada por 777 Automotive en Ciudad del Este'},
+  {href:'https://www.instagram.com/p/DayodkPmBui/?img_index=1', image:'/assets/instagram-post-2.jpg', label:'Línea de capot, parrilla, paragolpe y accesorios'},
+  {href:'https://www.instagram.com/p/DZ-edD3RCQG/', image:'/assets/instagram-post-3.jpg', label:'Repuestos y accesorios disponibles en 777 Automotive'}
+];
 const Instagram=()=> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".75" fill="currentColor" stroke="none"/></svg>;
 const Facebook=()=> <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v7h4v-7h3.4l.6-4h-4V9c0-.7.3-1 1-1Z"/></svg>;
 const WhatsApp=()=> <svg className="whatsapp-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={siWhatsapp.path}/></svg>;
@@ -50,7 +55,7 @@ function App(){
       <section className="hero" id="inicio" ref={hero}>
         <div className="hero-copy">
           <div className="reveal"><h1>EXPERTOS EN<br/><span>ACCESORIOS</span><br/>Y REPUESTOS</h1></div>
-          <div className="hero-support"><p>Piezas y accesorios para tu S10, Hilux, Fortuner y más.</p><a className="button primary" href={WA}>COTIZAR POR WHATSAPP <WhatsApp/></a></div>
+          <div className="hero-support"><p>Piezas y accesorios para tu S10, Hilux, Fortuner y más, con atención en Ciudad del Este.</p><a className="button primary" href={WA}>COTIZAR POR WHATSAPP <WhatsApp/></a></div>
         </div>
         <div className="truck-wrap"><img ref={truck} className="truck" src="/assets/hero-showroom.jpg" alt="Pickup negra premium equipada en un showroom luminoso"/></div>
         <div className="scroll-cue"><span></span> DESLIZA PARA VER MÁS</div>
@@ -65,13 +70,13 @@ function App(){
       </section>
       <section className="instagram" id="instagram">
         <div className="section-head"><h2>DESDE EL<br/>GARAGE.</h2><p>Proyectos, novedades y piezas que transforman cada vehículo.</p></div>
-        <div className="instagram-grid">{[0,1,2,3].map(i=><a className={'insta-tile p'+i} href={IG} aria-label={'Publicación de Instagram '+(i+1)} key={i}><span><Instagram/></span></a>)}</div>
+        <div className="instagram-grid">{instagramPosts.map(post=><a className="insta-tile" href={post.href} target="_blank" rel="noreferrer" aria-label={`Abrir en Instagram: ${post.label}`} key={post.href} style={{backgroundImage:`url(${post.image})`}}><span><Instagram/></span></a>)}</div>
         <a href={IG} className="button outline">SÍGUENOS EN INSTAGRAM <Instagram/></a>
       </section>
     </main>
     <footer>
       <div className="footer-top"><h2>¿LISTO PARA<br/><span>EQUIPAR TU AUTO?</span></h2><a className="button primary large" href={WA}>HABLAR POR WHATSAPP <WhatsApp/></a></div>
-      <div className="footer-bottom"><img src="/assets/logo.jpg" loading="lazy" alt="777 Automotive"/><p>Envíos Seguros: 🇵🇾 Paraguay y 🇧🇷 Brasil</p><nav><a href={FB} aria-label="Facebook"><Facebook/></a><a href={IG} aria-label="Instagram"><Instagram/></a></nav></div>
+      <div className="footer-bottom"><img src="/assets/logo.jpg" loading="lazy" alt="777 Automotive"/><p>Atención exclusiva en Ciudad del Este, Paraguay.</p><nav><a href={FB} aria-label="Facebook"><Facebook/></a><a href={IG} aria-label="Instagram"><Instagram/></a></nav></div>
     </footer>
   </>
 }

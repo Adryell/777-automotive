@@ -12,7 +12,7 @@ React com Vite, confirmado pelo usuário.
 
 ## Users
 
-Propietarios de pickups y autos en Paraguay y Brasil que buscan accesorios, repuestos y atención directa para vehículos como S10, Hilux y Fortuner.
+Propietarios de pickups y autos en Ciudad del Este que buscan accesorios, repuestos y atención directa para vehículos como S10, Hilux y Fortuner.
 
 ## Product Purpose
 
@@ -20,7 +20,7 @@ Presentar institucionalmente a 777 Automotive y convertir el interés del visita
 
 ## Positioning
 
-Especialización en accesorios y repuestos para pickups y autos, con atención a Paraguay y Brasil.
+Especialización en accesorios y repuestos para pickups y autos, con atención exclusiva en Ciudad del Este.
 
 ## Operating Context
 
@@ -30,7 +30,7 @@ La principal interacción comercial ocurre por WhatsApp. Instagram funciona como
 
 - Landing page institucional en español.
 - Contacto principal mediante WhatsApp.
-- Envíos a Paraguay y Brasil.
+- Atención exclusiva en Ciudad del Este, Paraguay.
 - No se proporcionaron números de teléfono, URLs sociales ni catálogo; deben permanecer como enlaces configurables sin inventar datos.
 
 ## Brand Commitments
@@ -52,5 +52,4 @@ La principal interacción comercial ocurre por WhatsApp. Instagram funciona como
 - Hacer que cotizar por WhatsApp sea inmediato.
 - Comunicar especialización automotriz sin exagerar ni inventar pruebas.
 - Mantener una experiencia visual premium, rápida y clara.
-- Dar visibilidad equilibrada a Paraguay y Brasil.
-
+- Dejar clara la atención local en Ciudad del Este.
