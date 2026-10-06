@@ -64,11 +64,11 @@ components:
   category-card-dark:
     backgroundColor: "{colors.category-black}"
     textColor: "{colors.gallery-white}"
-    height: "440px"
+    height: "auto"
   category-card-accent:
     backgroundColor: "{colors.signal-yellow}"
     textColor: "{colors.showroom-black}"
-    height: "440px"
+    height: "auto"
 ---
 
 # Design System: 777 Automotive
@@ -136,9 +136,11 @@ The palette is deliberately narrow: one energetic brand signal against a family 
 
 ## Layout
 
-The desktop system uses a fluid page gutter of 4.5vw and generous section spacing of 110px. Beneath the 92px header, the hero photograph fills the entire remaining viewport. A left-to-right black overlay runs from 90% opacity through 74% at 38%, then opens to 22% at 72% and 8% at the far edge. Hero copy occupies at most 650px or 50vw over the left side; its primary text is white, with ACCESORIOS in signal yellow. Content grids use equal columns with 18px gaps. Section headers place the display heading and a narrow supporting paragraph at opposite edges.
+The desktop system uses a fluid page gutter of 4.5vw and generous section spacing of 110px. The hero reserves 64px of the opening viewport for the yellow coverage strip through `min-height: calc(100svh - 64px)` and automatic height; it grows when content needs more room. Beneath the 92px header, the hero photograph fills the remaining hero area. A left-to-right black overlay runs from 90% opacity through 74% at 38%, then opens to 22% at 72% and 8% at the far edge. Hero copy occupies at most 650px or 50vw over the left side; its primary text is white, with ACCESORIOS in signal yellow. Content grids use equal columns with 18px gaps. Section headers place the display heading and a narrow supporting paragraph at opposite edges.
 
-At 900px and below, the photograph remains full-viewport beneath the 76px header and the overlay turns vertical, moving from 83% black at the top through 70% at 53% to 12% at the bottom. Hero copy spans the available width and reserves 19vh below; at 560px it reserves 23vh and the photo focal point shifts to 55% horizontally. Section headers stack, category panels become full width, and the Instagram grid becomes a horizontal, scroll-snapping rail of 74vw tiles.
+At 900px and below, the photograph fills the hero beneath the 76px header and the overlay turns vertical, moving from 83% black at the top through 70% at 53% to 12% at the bottom. Hero copy spans the available width and reserves 8svh below; at 560px the photo focal point shifts to 55% horizontally. Section headers stack, category panels become full width, and the Instagram copy and gallery stack vertically.
+
+For short horizontal viewports from 561px to 900px wide and at most 600px high, hero copy forms two columns: the headline on the left, supporting copy and CTA on the right. The headline uses `clamp(2rem, 4.3vw, 3rem)` and the CTA fills its column; the hero retains automatic height so content can grow without clipping.
 
 **The Wide Stage Rule.** Let the vehicle, headlines, and category names occupy substantial scale; supporting copy remains narrow and never competes for width.
 
@@ -150,9 +152,9 @@ The system is flat by default and creates depth through full-bleed photography, 
 
 **The Crop-Safe Motion Rule.** Environmental imagery may scale and pan only inside an overflow-hidden cover frame; never apply 3D tilt, rotation, or motion that exposes the image edge.
 
-**The Ordered Reveal Rule.** Each post-hero section reveals once at 82% viewport entry, in authored DOM order, with a 0.11s stagger, 0.9s duration, and `power4.out`: marquee, category heading/copy/cards, Instagram heading/copy/tiles/button, then footer heading/button/bottom items.
+**The Ordered Reveal Rule.** Each participating post-hero section reveals once at 82% viewport entry, in authored DOM order, with a 0.11s stagger, 0.9s duration, and `power4.out`: category heading/copy/cards, wholesale heading/offer/support/button, Instagram heading/copy/button, contact heading/city/details/button, then footer heading/button/bottom items. These scroll reveals use translation and optional scale without blur filters. The marquee container, native Instagram gallery, and location map remain unanimated.
 
-**The Marquee Clip Rule.** Reveal the marquee by clipping its container from right to left. Do not animate the marquee container's transform, because its child already owns the continuous horizontal transform.
+**The Stable Marquee Rule.** Keep the marquee container immediately visible and static, with its thin black borders intact. Do not apply entrance animations, clipping, or transforms to the container; only its text track owns continuous horizontal motion.
 
 **The Static Fallback Rule.** When reduced motion is requested, do not initialize Lenis, hero motion, ScrollTriggers, or staged reveals; all content must render immediately in its final state.
 
@@ -167,31 +169,57 @@ Controls and content containers are square-edged with no shared corner radius. T
 ### Buttons
 
 - **Shape:** Square-edged and compact, with centered uppercase labels, a 14px icon gap, and no radius.
-- **Primary:** Signal-yellow fill and border with showroom-black text; standard padding is 19px by 23px, with a larger 23px by 28px footer variant.
-- **Hover / Focus:** Hover inverts to black and yellow with a 2px upward shift over 300ms. Keyboard focus uses a 3px yellow outline offset by 4px.
+- **Primary:** Signal-yellow fill and border with showroom-black text in both default and keyboard-focus states, including the footer variant; standard padding is 19px by 23px, with a larger 23px by 28px footer variant.
+- **Hover / Focus:** Hover inverts to black and yellow with a 2px upward shift over 300ms. Keyboard focus uses a 3px outline offset by 4px: showroom-black for contact and Instagram section links and category cards, yellow elsewhere.
 - **Outline:** Transparent with a thin dark border; hover fills black and reverses the text to white.
 - **WhatsApp Mark:** Every WhatsApp CTA renders the official `siWhatsapp.path` supplied by Simple Icons, never a hand-authored approximation, generic chat bubble, or outbound arrow. It is 19px inside text buttons and 21px in the square header action, inheriting the CTA's current color.
 
 ### Cards / Containers
 
 - **Corner Style:** Square, clipped, and overflow-hidden.
-- **Anatomy:** A 275px image field sits above a separate content band of at least 165px; media is never used as a low-contrast text backdrop.
+- **Anatomy:** A 275px image field sits above a separate content band of at least 165px; cards have automatic height, and media is never used as a low-contrast text backdrop. The category heading and action stack vertically at every breakpoint, with 11px metadata and a 12px "CONSULTAR POR WHATSAPP" action. At 560px and below, headings use `clamp(1.8rem, 10vw, 2.9rem)`.
 - **Background:** The ACCESORIOS content band is near-black with white type and a yellow action; REPUESTOS uses yellow with black type and action.
 - **Image Treatment:** Photography starts in grayscale and returns to color while scaling to 1.015 on hover.
 - **Shadow Strategy:** Flat at rest; hover lifts the complete panel by 5px with a restrained ambient shadow.
-- **Internal Padding:** Content bands use 22px 26px 24px. On compact mobile they use 18px 20px and stack the action below the heading.
+- **Internal Padding:** Content bands use 22px 26px 24px. On compact mobile they use 18px 20px; the action remains below the heading.
 
 ### Navigation
 
-The header is a black 92px bar with the official logo on the left and one square WhatsApp action with the authored solid mark on the right. On small screens it compresses to 76px. Social navigation repeats the square bordered icon treatment in the footer, turning yellow on hover.
+The header is a black 92px bar with the official 142px by 56px logo on the left and one square WhatsApp action with the authored solid mark on the right. At 900px and below it compresses to 76px, centers the 96px by 40px logo, and retains WhatsApp on the right. Social navigation repeats the square bordered icon treatment in the footer, turning yellow on hover, and links to the supplied official Facebook and Instagram profiles. The footer has no location/contact link; address, WhatsApp, and email details live in `#contacto`, and the coverage statement remains in the hero and marquee.
+
+### Wholesale Section
+
+A direct wholesale conversion section at `#mayoristas` extends the existing black, white, and signal-yellow showroom identity between categories and Instagram.
+
+- **Hierarchy:** The uppercase Archivo heading “¿SOS MAYORISTA?” stacks across two lines, with MAYORISTA? in yellow. The larger DM Sans offer follows, emphasizing mayoristas in yellow; quieter supporting copy leads into the primary WhatsApp action.
+- **Offer / CTA:** “Tenemos precios y condiciones especiales para mayoristas.” is followed by “Consultá las condiciones para tu próxima compra de accesorios y repuestos.” The yellow “CONSULTAR CONDICIONES” button uses the shared WhatsApp destination, official mark, hover inversion, and keyboard focus treatment.
+- **Photography:** `public/assets/mayoristas.webp` is generated illustrative photography of automotive accessories, parts, and distribution boxes. Its accessible description identifies it as illustrative; it does not serve as evidence of actual inventory. A square-edged, overflow-hidden cover frame keeps the image separate from the copy, with no text overlay.
+- **Desktop Layout:** Two equal columns place copy on the left and photography on the right, vertically centered with a 6vw gap and 100px by 4.5vw section padding. The media frame has a 1.2 aspect ratio.
+- **Mobile Layout:** At 900px and below, the columns stack with copy first, a 42px gap, 80px by 5vw padding, and a 3:2 media frame. At 560px and below, vertical padding becomes 64px, the gap becomes 36px, and the CTA spans the available width.
+- **Motion / Fallback:** Only the heading, offer, supporting copy, and CTA participate in the ordered reveal; the photograph remains static. Reduced-motion preferences skip staged reveals and display all content immediately in its final state.
 
 ### Social Gallery Tile
 
-Square image tiles sit in a nearly gapless grid. Hover adds a translucent black veil and reveals a centered yellow Instagram icon that scales from 0.7 to 1 over 350ms. Mobile tiles retain the square ratio inside the horizontal rail.
+The sage section uses the contact section's .9fr / 1.1fr split, 6vw gap, centered columns, and 100px by 4.5vw padding. Headline, supporting copy, and outline Instagram CTA occupy the left column; the native profile gallery occupies the right. At 900px and below they stack, and at 560px and below the CTA spans the available width.
+
+Instagram's native embed loads within 300px of viewport entry. Its internal width stays at 540px while a resize observer scales it to fit the gallery. The approved visual crop offsets the iframe by 158px and retains a 540 / 359.65625 viewport, displaying six images without the profile header or footer. Loading and error states use an opaque status overlay with `role="status"`; the gallery exposes `aria-busy` while loading. The iframe remains rendered beneath the overlay so Instagram can measure and hydrate it, while hidden from assistive technology until ready. A measured iframe height of at least 518px removes the overlay; SDK failure or a 20-second timeout shows the error message and an external profile link that opens in a new tab. The existing profile CTA remains available in every state. Readiness is a height heuristic, not robust detection of image-network success. The crop and heuristic depend on Instagram's current layout; no custom CSS is injected into the external iframe, and the refresh interval has not been verified.
+
+### Location & Contact Section
+
+A dedicated section at `#contacto` sits between Instagram and the footer, pairing direct contact details with an interactive location map on the established showroom-paper surface.
+
+WhatsApp and email links have a minimum 44px interactive height, allow long text to wrap, and use a showroom-black keyboard-focus outline on the light section surface.
+
+- **Hierarchy / Details:** The uppercase Archivo heading “UBICACIÓN Y CONTACTO.” stacks across two lines, followed by the muted city label “Ciudad del Este, Paraguay” and labeled address, WhatsApp, and email entries. The address is “Km 4 Barrio Che La Reina, calle R.I 2 de Mayo”; the linked WhatsApp number is +595 982 766121, and the email links to `mailto:777automotivecde@gmail.com`.
+- **Actions:** The WhatsApp link uses the shared destination and a prefilled message identifying the website origin before “Quisiera información para visitar la tienda.” Contact links are underlined and increase underline thickness on hover. The yellow “ABRIR EN GOOGLE MAPS” CTA carries a map-pin icon and opens the original supplied URL, `https://share.google/I4kVGgefAP3qqXHle`, in a new tab with `noopener noreferrer`.
+- **Map:** A borderless Google Maps iframe uses CID `16968087522545904581`, Spanish labels, zoom 16, and embed output. It fills a square-edged frame with a metallic-light fallback surface, loads lazily, carries the title “Ubicación de 777 Automotive en Ciudad del Este”, and allows fullscreen. The desktop frame is 560px tall.
+- **Desktop Layout:** Vertically centered columns use a .9fr copy / 1.1fr map split, a 6vw gap, and 100px by 4.5vw section padding.
+- **Mobile Layout:** At 900px and below, copy and map stack with a 42px gap, 80px by 5vw padding, and a 400px map height. At 560px and below, vertical padding becomes 64px, the gap becomes 36px, the CTA spans the available width, and the map height becomes 340px.
+- **Motion / Fallback:** Only the heading, city label, contact details, and CTA participate in the ordered reveal; the map remains unanimated and available for interaction. Reduced-motion preferences display all content immediately in its final state.
 
 ### Information Marquee
 
-A yellow, black-bordered strip carries repeated uppercase Archivo text in continuous linear motion. It functions as compact proof of product focus and coverage. Its section entrance clips the container from right to left while the inner track retains sole ownership of horizontal translation; reduced-motion preferences render it immediately without entrance or continuous motion.
+A yellow strip with 1px black borders carries repeated uppercase Archivo text in continuous linear motion. It functions as compact proof of product focus and coverage. The container remains static and immediately visible without an entrance animation, vertical scaling, or clipping; only the inner text track translates horizontally. Reduced-motion preferences retain the visible strip with static text.
 
 ## Do's and Don'ts
 
@@ -201,12 +229,12 @@ A yellow, black-bordered strip carries repeated uppercase Archivo text in contin
 - **Do** use the environmental showroom photograph full-viewport beneath the header with the directional dark overlay.
 - **Do** use sand, sage, and metallic blue-gray to distinguish light sections while keeping yellow reserved for brand signals.
 - **Do** render hero text in white and ACCESORIOS in solid signal yellow, without an underline.
-- **Do** separate category photography from its content band and stack the action beneath copy on compact mobile.
+- **Do** separate category photography from its content band and stack the action beneath copy at every breakpoint.
 - **Do** source the official WhatsApp path from Simple Icons (`siWhatsapp`) on every WhatsApp CTA.
 - **Do** preserve strong black-on-light and light-on-black contrast, with yellow as the active signal.
 - **Do** use uppercase Archivo for short, emphatic headings and DM Sans for supporting copy and actions.
-- **Do** preserve the ordered, once-only section reveal sequence and its reduced-motion static fallback.
-- **Do** reveal the marquee with `clip-path` only, leaving its scrolling child's transform untouched.
+- **Do** preserve the ordered, once-only section reveal sequence without blur filters and retain its reduced-motion static fallback.
+- **Do** keep the marquee container static and immediately visible with 1px black borders, reserving continuous horizontal motion for its text track.
 - **Do** keep WhatsApp conversion controls visually immediate and provide visible keyboard focus.
 - **Do** preserve a complete reduced-motion experience whenever adding animation.
 
@@ -220,4 +248,4 @@ A yellow, black-bordered strip carries repeated uppercase Archivo text in contin
 - **Don't** place category titles directly over busy photography or bring back abstract tire/part geometry in place of product imagery.
 - **Don't** substitute a generic message icon, speech bubble, or outbound arrow for the WhatsApp brand mark.
 - **Don't** invent testimonials, partner logos, prices, certifications, contact details, or catalog claims to fill layouts.
-- **Don't** shrink image collections into unreadable mobile grids; use the established horizontal rail behavior.
+- **Don't** shrink catalog image collections into unreadable mobile grids; the approved native Instagram preview keeps its six-image grid.
